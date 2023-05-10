@@ -1,0 +1,76 @@
+<mvc:View controllerName="consultaprodutos.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content> 
+    
+            <FlexBox id="_IDGenFlexBox1" justifyContent="Center" alignContent="Start" alignItems="Center">
+                <Input id="inpBusca"/>
+                <Button id="_IDGenButton1" text ="Buscar" press="onPressBuscar"/>
+            </FlexBox>
+            <VBox id="productBox" visible="true">
+                <ObjectHeader id="_IDGenObjectHeader1" 
+                title ="{ModeloProduto>/product/product_name}"
+                number="{ModeloProduto>/product/quantity}">
+
+                <attributes>
+                    <ObjectAttribute id="_IDGenObjectAttribute1" title="Código de barras" text="{ModeloProduto>/code}"/>
+                    <ObjectAttribute id="_IDGenObjectAttribute2" title="Marca" text="{ModeloProduto>/product/brands_tags}"/>
+                </attributes>
+                </ObjectHeader> 
+                <Panel id="_IDGenPanel1" headerText = "Informações">
+                    <content>
+                        <HBox id="_IDGenHBox1" >
+                            <Image id="_IDGenImage1" src="{ModeloProduto>/product/image_front_url}" width = "5em" press="onClickImage"/>
+                            <VBox id="_IDGenVBox1" >
+                                <ObjectAttribute id="_IDGenObjectAttribute3" title="Categoria" text="{ModeloProduto>/product/categories}"/>
+                                <ObjectAttribute id="_IDGenObjectAttribute4" title="Market" text="{ModeloProduto>/product/stores}"/>
+                                <ObjectAttribute id="_IDGenObjectAttribute5" title="Link" text="{ModeloProduto>/product/manufacturing}"/>
+                            </VBox>
+                        </HBox>
+                    </content>
+                </Panel>       
+                <Panel id="_IDGenPanel2" headerText = "Informações">
+                    <content>
+                        <HBox id="_IDGenHBox2" >
+                            <Image id="_IDGenImage2" src="{ModeloProduto>/product/image_ingredients_url}" width = "5em" press="onClickImage"/>
+                            <Table id="Table" items="{ModeloProduto>/product/ingredients}" >
+                                <columns>
+                                    <Column id="column1" >
+                                        <Text id="text1" text="Description"/>
+
+                                    </Column>
+
+                                    <Column id="column2" >
+                                        <Text id="text2" text="Porcentagem mínima"/>
+                                    </Column>
+
+                                    <Column id="column3" >
+                                        <Text id="text3" text="Porcentagem máxima"/>
+                                    </Column>
+
+                                    <Column id="column4" >
+                                        <Text id="text4" text="Porcentagem estimada"/>
+                                    </Column>
+                                </columns>
+
+                                <items>
+                                    <ColumnListItem id="ColumList1" >
+                                        <cells>
+                                            <Text id="1" text="{ModeloProduto>text}" />
+                                            <Text id="2" text="{ModeloProduto>percent_min}" />
+                                            <Text id="3" text="{ModeloProduto>percent_max}" />
+                                            <Text id="4" text="{ModeloProduto>percent_estimate}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            
+                            </Table>
+                            
+                        </HBox>
+                    </content>
+                </Panel>       
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
